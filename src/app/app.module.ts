@@ -20,9 +20,9 @@ import { StaticpagesModule } from './staticpages/staticpages.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     ArticlesModule,
-    StaticpagesModule
+    StaticpagesModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
