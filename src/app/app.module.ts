@@ -9,6 +9,14 @@ import { BannerComponent } from './banner/banner.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ArticlesModule } from './articles/articles.module';
 import { StaticpagesModule } from './staticpages/staticpages.module';
+//*Account Related Stuff
+import { AccountserviceService } from './account/accountservice.service';
+import { HttpClientModule,HttpClient} from '@angular/common/http';
+import { AccountModule } from './account/account.module';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -20,11 +28,13 @@ import { StaticpagesModule } from './staticpages/staticpages.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ArticlesModule,
     StaticpagesModule,
+    AccountModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [AccountserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
