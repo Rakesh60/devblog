@@ -6,8 +6,8 @@ import { ArticleListComponent } from './articles/article-list/article-list.compo
 
 
 const routes: Routes = [
-  {path:'',redirectTo:'/',pathMatch:'full'},
-  {path:'**',component:PagenotfoundComponent}
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '**', component: PagenotfoundComponent },
 ];
 
 @NgModule({

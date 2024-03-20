@@ -1,46 +1,43 @@
 
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
 import { AccountserviceService } from '../accountservice.service';
-import { Accountinfo } from '../accountinfo';
+import { FormControl, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit {
-  // regForm: FormGroup;
-  // datasaved = false;
-  // massage: string;
-  constructor(private formbuilder: FormBuilder, private accountservice: AccountserviceService) { 
-    
+export class RegistrationComponent {
+
+  constructor(private loginservice: AccountserviceService) { }
+
+  userForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+    password: new FormControl('')
+  })
+  // onSaveUser() {
+  //   //debugger;
+  //   const obj = this.userForm.value
+  //   console.log(this.userForm.value)
+  //   this.loginservice.createUser(obj)
+  // }
+  onSaveUser(): void {
+    this.loginservice.createUser(this.userForm.value)
+      .subscribe(
+        (response: any) => {
+          console.log('Data sent successfully:', response);
+          alert(response.name)
+
+          // Optionally, reset the form
+          // this.resetForm();
+        },
+        (error: any) => {
+          console.error('Error sending data:', error);
+        }
+      );
   }
 
-  ngOnInit() {
-    this.setFormState();
-  }
-  setFormState(): void {
-    // this.regForm = this.formbuilder.group({
-    //   Name: ['', [Validators.required]],
-    //   Email: ['', [Validators.required]],
-    //   Password: ['', [Validators.required]]
-    // })
-  }
 
-  onSubmit() {
-
-    // let userinfo = this.regForm.value;
-    // //console.log(userinfo);
-    // this.createuserAccount(userinfo);
-    // this.regForm.reset();
-  }
-  createuserAccount(accinfo: Accountinfo) {
-    this.accountservice.createaccount(accinfo).subscribe(
-      () => {
-        // this.datasaved = true;
-        // this.massage = "User Created";
-        // this.regForm.reset();
-      }
-    )
-  }
 }

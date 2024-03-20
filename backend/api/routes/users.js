@@ -3,12 +3,8 @@ var userModel = require("../models/user");
 var router = express.Router();
 
 /* GET users listing. */
-router.get("/", async function (req, res, next) {
-  const user = new userModel({
-    name: "Vikas",
-    email: "vikas@gmail.com",
-    password: "vikas@123",
-  });
+router.post("/signup", async function (req, res) {
+  const user = new userModel(req.body);
   try {
     const saveUser = await user.save();
     console.log(saveUser);
