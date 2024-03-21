@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AccountserviceService } from '../accountservice.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-  constructor(private signupservice: AccountserviceService) { }
+  constructor(private signupservice: AccountserviceService, private router: Router) { }
 
   userForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -27,6 +28,7 @@ export class RegistrationComponent {
           // Optionally, reset the form
           if (response.success) {
             this.userForm.reset();
+            this.router.navigate(['/login'])
           }
         },
         (error: any) => {
