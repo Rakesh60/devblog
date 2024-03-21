@@ -18,7 +18,7 @@ export class LoginComponent {
 
     this.loginService.loginUser(this.loginForm.value).subscribe((response: any) => {
       console.log(response)
-      this.loginForm.reset
+      this.loginForm.reset()
     },
       (error: any) => {
         console.log('Error in login:', error.error)
