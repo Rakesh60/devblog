@@ -9,9 +9,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-
   constructor(private loginservice: AccountserviceService) { }
-
+  
   userForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     email: new FormControl(''),
