@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-  constructor(private loginservice: AccountserviceService) { }
-  
+  constructor(private signupservice: AccountserviceService) { }
+
   userForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     email: new FormControl(''),
@@ -23,14 +23,18 @@ export class RegistrationComponent {
   //   this.loginservice.createUser(obj)
   // }
   onSaveUser(): void {
-    this.loginservice.createUser(this.userForm.value)
+    console.log(this.userForm)
+    this.signupservice.createUser(this.userForm.value)
       .subscribe(
         (response: any) => {
           console.log('Data sent successfully:', response);
-          alert(response.name)
+          alert(response.success)
+
 
           // Optionally, reset the form
-          // this.resetForm();
+        if (response.success) {
+          this.userForm.reset()
+        } 
         },
         (error: any) => {
           console.error('Error sending data:', error);

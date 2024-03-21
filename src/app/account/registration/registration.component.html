@@ -1,34 +1,48 @@
 <div class="container">
-  <h1>Registeration</h1>
-  
-  
-  
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="text-center">Registration</h1>
 
-  <form [formGroup]="userForm">
-    <div class="row">
-      <div class="col-4">
-        <label for="">Name</label>
-        <input type="text" class="form-control" formControlName="name" />
-      </div>
+      <form [formGroup]="userForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+          />
+        </div>
+        <div class="container">
+          <div class="row">
+            <button
+              type="button"
+              class="btn btn-success btn-block p-2 mt-2"
+              (click)="onSaveUser()"
+            >
+              Save User
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="row">
-      <div class="col-4">
-        <label for="">Email</label>
-        <input type="text" class="form-control" formControlName="email" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <label for="">Password</label>
-        <input type="text" class="form-control" formControlName="password" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <button (click)="onSaveUser()" class="btn btn-success">
-          Save User
-        </button>
-      </div>
-    </div>
-  </form>
+  </div>
 </div>
