@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validator, Validators } from '@angular/forms';
 import { AccountserviceService } from '../accountservice.service';
 
 @Component({
@@ -10,15 +10,15 @@ import { AccountserviceService } from '../accountservice.service';
 export class LoginComponent {
   constructor(private loginService: AccountserviceService) { }
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)])
   })
   onLogin(): void {
     console.log(this.loginForm)
 
     this.loginService.loginUser(this.loginForm.value).subscribe((response: any) => {
       console.log(response)
-      this.loginForm.reset()
+      this.loginForm.reset
     },
       (error: any) => {
         console.log('Error in login:', error.error)

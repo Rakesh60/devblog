@@ -1,8 +1,7 @@
-
 import { Component } from '@angular/core';
 import { AccountserviceService } from '../accountservice.service';
-import { FormControl, FormGroup } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -12,35 +11,27 @@ export class RegistrationComponent {
   constructor(private signupservice: AccountserviceService) { }
 
   userForm: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl('')
-  })
-  // onSaveUser() {
-  //   //debugger;
-  //   const obj = this.userForm.value
-  //   console.log(this.userForm.value)
-  //   this.loginservice.createUser(obj)
-  // }
+    name: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+  });
+
   onSaveUser(): void {
-    console.log(this.userForm)
+    console.log(this.userForm);
     this.signupservice.createUser(this.userForm.value)
       .subscribe(
         (response: any) => {
           console.log('Data sent successfully:', response);
-          alert(response.success)
-
+          alert(response.success);
 
           // Optionally, reset the form
-        if (response.success) {
-          this.userForm.reset()
-        } 
+          if (response.success) {
+            this.userForm.reset();
+          }
         },
         (error: any) => {
           console.error('Error sending data:', error);
         }
       );
   }
-
-
 }
