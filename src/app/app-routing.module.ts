@@ -8,7 +8,7 @@ import { RouteGuard } from './RouteGuard';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full', canActivate: [RouteGuard] },
-  { path: '**', component: PagenotfoundComponent },
+  { path: '**', component: PagenotfoundComponent,},
 ];
 
 @NgModule({

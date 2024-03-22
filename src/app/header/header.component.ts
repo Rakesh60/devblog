@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  
  constructor(private router:Router){}
   navbarCollapsed = true;
  
@@ -16,8 +17,10 @@ export class HeaderComponent {
   logout(): void {
     // Clear authentication state (e.g., remove token from localStorage)
     localStorage.removeItem('token');
+    localStorage.getItem
     // Redirect to login page
     this.router.navigate(['/login']);
   }
- 
+  
+  
 }
