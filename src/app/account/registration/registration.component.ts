@@ -33,6 +33,7 @@ export class RegistrationComponent {
         },
         (error: any) => {
           console.error('Error sending data:', error);
+          alert(error.message)
         }
       );
   }

@@ -25,7 +25,8 @@ export class LoginComponent {
 
     },
       (error: any) => {
-        console.log('Error in login:', error.error)
+        console.log('Error in login:', error.name)
+        alert(error.name)
       })
   }
 }

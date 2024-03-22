@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 })
 export class AccountserviceService {
   url = 'http://localhost:4000/api/auth/'
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+   }
   createUser(formData: any): Observable<any> {
     return this.http.post(`${this.url}signup`, formData);
 
@@ -14,7 +15,6 @@ export class AccountserviceService {
   loginUser(loginData: any): Observable<any> {
     return this.http.post(`${this.url}login`, loginData);
   }
-
 }
 
 
